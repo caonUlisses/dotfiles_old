@@ -21,6 +21,7 @@ Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'airblade/vim-gitgutter'
 
 " Scripts
 call vundle#end()            " required
