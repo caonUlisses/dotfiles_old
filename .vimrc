@@ -55,6 +55,10 @@ colorscheme adventurous
 map <Leader><tab> :NERDTreeToggle<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>ev :tabedit $MYVIMRC<cr>
+nmap <Leader>vpi :PluginInstall<cr>
+nmap <Leader>vpu :PluginUpdate<cr>
+nmap <Leader>vpc :PluginClean<cr> y <cr>
 
 " Source vimrc file on save
 augroup autosourcing
