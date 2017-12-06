@@ -22,6 +22,10 @@ Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'SirVer/ultisnips'
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'epilande/vim-react-snippets'
+Plugin 'mattn/emmet-vim'
 
 " Scripts
 call vundle#end()            " required
@@ -35,6 +39,13 @@ let g:prettier#config#single_quote = 'true'
 let g:prettier#config#tab_width = 2
 let g:prettier#config#require_pragma = 'true'
 
+" Emmet
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
 " Syntastic
 let g:syntastic_javascript_checkers=['eslint']
 set statusline+=%#warningmsg#
@@ -47,10 +58,12 @@ let g:syntastic_check_on_wq = 0
 
 " Visuals
 syntax on
-set t_Co=256
-set background=dark
-set termguicolors
+" set t_Co=256
+" set background=dark
+" set termguicolors
 colorscheme adventurous
+let &t_8f="\<Esc>[38;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;%lu;%lu;%lum"
 
 " Keymaps
 map <Leader><tab> :NERDTreeToggle<CR>
@@ -60,6 +73,9 @@ nmap <Leader>ev :tabedit $MYVIMRC<cr>
 nmap <Leader>vpi :PluginInstall<cr>
 nmap <Leader>vpu :PluginUpdate<cr>
 nmap <Leader>vpc :PluginClean<cr> y <cr>
+let g:UltiSnipsExpandTrigger="<C-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Source vimrc file on save
 augroup autosourcing
