@@ -25,6 +25,8 @@ Plugin 'epilande/vim-es2015-snippets'
 Plugin 'epilande/vim-react-snippets'
 Plugin 'mattn/emmet-vim'
 Plugin 'w0rp/ale'
+Plugin 'KabbAmine/vCoolor.vim'
+Plugin 'ap/vim-css-color'
 
 " Scripts
 call vundle#end()            " required
@@ -57,9 +59,6 @@ let g:syntastic_check_on_wq = 0
 
 " Visuals
 syntax on
-" set t_Co=256
-" set background=dark
-" set termguicolors
 colorscheme adventurous
 let &t_8f="\<Esc>[38;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;%lu;%lu;%lum"
@@ -75,6 +74,19 @@ nmap <Leader>vpc :PluginClean<cr> y <cr>
 let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:vcoolor_disable_mappings = 1
+nmap <Leader>c :VCoolor <cr>
+let g:vcoolor_map = '<leader>g'
+nnoremap n nzz
+nnoremap N Nzz
+
+" Spacing
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set number
+set smartindent
+set clipboard=unnamed
 
 " Source vimrc file on save
 augroup autosourcing
