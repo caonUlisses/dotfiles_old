@@ -17,27 +17,26 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'emhaye/ceudah.vim'
 Plugin 'Dru89/vim-adventurous'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plugin 'moll/vim-node'
 Plugin 'godlygeek/tabular'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'SirVer/ultisnips'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'epilande/vim-react-snippets'
 Plugin 'mattn/emmet-vim'
+Plugin 'w0rp/ale'
 
 " Scripts
 call vundle#end()            " required
 filetype plugin indent on    " required
 set encoding=utf8
 
-" Vim-Prettier
-let g:prettier#config#print_width = 80
-let g:prettier#config#semi = 'false'
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#tab_width = 2
-let g:prettier#config#require_pragma = 'true'
+" JavaScript Standards
+autocmd bufwritepost *.js silent !standard --fix %
+set autoread
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
 
 " Emmet
 let g:user_emmet_settings = {
