@@ -27,6 +27,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'w0rp/ale'
 Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'ap/vim-css-color'
+Plugin 'csscomb/vim-csscomb'
 
 " Scripts
 call vundle#end()            " required
@@ -46,16 +47,6 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
-
-" Syntastic
-let g:syntastic_javascript_checkers=['eslint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " Visuals
 syntax on
@@ -79,6 +70,12 @@ nmap <Leader>c :VCoolor <cr>
 let g:vcoolor_map = '<leader>g'
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
+autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb
 
 " Spacing
 set expandtab
