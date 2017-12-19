@@ -28,6 +28,8 @@ Plugin 'w0rp/ale'
 Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'ap/vim-css-color'
 Plugin 'csscomb/vim-csscomb'
+Plugin 'sickill/vim-monokai'
+Plugin 'dracula/vim'
 
 " Scripts
 call vundle#end()            " required
@@ -35,11 +37,13 @@ filetype plugin indent on    " required
 set encoding=utf8
 
 " JavaScript Standards
-autocmd bufwritepost *.js silent !standard --fix %
-set autoread
-let g:ale_linters = {
-\   'javascript': ['standard'],
+let g:ale_fixers = {
+\  'javascript': ['standard']
 \}
+
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_enter = 0
 
 " Emmet
 let g:user_emmet_settings = {
@@ -50,7 +54,7 @@ let g:user_emmet_settings = {
 
 " Visuals
 syntax on
-colorscheme adventurous
+colorscheme dracula 
 let &t_8f="\<Esc>[38;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;%lu;%lu;%lum"
 
@@ -84,6 +88,9 @@ set shiftwidth=2
 set number
 set smartindent
 set clipboard=unnamed
+
+" ControlP Vim
+let g:ctrlp_custom_ignore = 'node_modules\|git'
 
 " Source vimrc file on save
 augroup autosourcing
