@@ -33,20 +33,31 @@ Plugin 'dracula/vim'                  " Theme
 Plugin 'plasticboy/vim-markdown'      " Markdown Tools
 Plugin 'suan/vim-instant-markdown'    " Instant markdown live-edit
 Plugin 'mzlogin/vim-markdown-toc'     " Table of Contents generator for md
+Plugin 'itmammoth/doorboy.vim'        " No more 'esc j i } esc k'
+Plugin 'tpope/vim-surround'           " Change surroundings
+Plugin 'gregsexton/MatchTag'          " Highlight the matching tag
+Plugin 'mxw/vim-jsx'                  " JSX funtionallity
 
+" JSX tag highlighting
+let g:jsx_ext_required = 1
+ 
 " Scripts
 call vundle#end()            " required
 filetype plugin indent on    " required
 set encoding=utf8            " enables UFT-8
 
 " JavaScript Standards
-let g:ale_fixers = {         
-\  'javascript': ['standard']
-\} " Set ALE for standardJS
+let g:ale_fixers = {
+\   'javascript': ['standard'],
+\}
 
-let g:ale_lint_on_text_changed = 'never' " don't load format all the time
-let g:ale_fix_on_save = 1                " fix files when I save
-let g:ale_lint_on_enter = 0              " don't lint when Enter is pressed
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
 
 " Emmet
 let g:user_emmet_settings = {
@@ -54,6 +65,10 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \} " Allows emmet on JSX files
+
+" Calcurse
+autocmd BufRead, BufNewFile /tmp/calcurse* set filetype=markdown      " set md
+autocmd BufRead, BufNewFile ~/.calcurse/notes/* set filetype=markdown " set md
 
 " NERDTree
 let NERDTreeIgnore=['node_modules'] " exclude 'node_modules' from NERDTree
@@ -73,6 +88,8 @@ nmap <Leader>vpi :PluginInstall<cr>
 nmap <Leader>vpu :PluginUpdate<cr>
 nmap <Leader>vpc :PluginClean<cr> y <cr>
 nmap <Leader>= :20split <cr>
+nmap <Leader>ht :highlight NonText ctermfg=0<cr>
+nmap <Leader><cr> o <esc> kk <cr>
 
 let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -90,12 +107,15 @@ autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
 autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb
 
 " Spacing
-set expandtab         " turn tabs into spaces
-set tabstop=2         " each tab will have 2 spaces
-set shiftwidth=2      " identation for 2
-set number            " show numbers
-set smartindent       " make identation work
-set clipboard=unnamed " fix clipboard identation
+set expandtab             " turn tabs into spaces
+set tabstop=2             " each tab will have 2 spaces
+set shiftwidth=2          " identation for 2
+set number                " show numbers
+set smartindent           " make identation work
+set clipboard=unnamed     " fix clipboard identation
+set autoindent            " set autoindent for newlines
+set si
+filetype plugin indent on " fix autoindent based on filetype
 
 " ControlP Vim
 let g:ctrlp_custom_ignore = 'node_modules\|git' " remove folders from ctrlp
