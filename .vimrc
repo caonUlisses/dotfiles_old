@@ -87,7 +87,8 @@ nmap <Leader>ev :tabedit $MYVIMRC<cr>
 nmap <Leader>vpi :PluginInstall<cr>
 nmap <Leader>vpu :PluginUpdate<cr>
 nmap <Leader>vpc :PluginClean<cr> y <cr>
-nmap <Leader>= :20split <cr>
+nmap <Leader>= :split <cr>
+nmap <Leader>% :vsplit <cr>
 nmap <Leader>ht :highlight NonText ctermfg=0<cr>
 nmap <Leader><cr> o <esc> kk <cr>
 
