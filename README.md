@@ -1,4 +1,3 @@
-# New vimrc, new life
+# DotFiles
 
-Just some tweakings I've been doing to my beloved text editor.
-
+General configs I use
