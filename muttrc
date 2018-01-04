@@ -1,3 +1,6 @@
+source ~/.mutt/credentials
+source ~/.mutt/muttcolors
+
 set ssl_starttls=yes
 set ssl_force_tls=yes
 set folder = imaps://imap.gmail.com/
@@ -9,4 +12,28 @@ set certificate_file = "~/.mutt/certificates"
 set move = no
 set imap_keepalive = 900
 
-source ~/.mutt/credentials
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+mono bold bold
+mono underline underline
+mono indicator reverse
+color index yellow default '.*'
+color index_author red default '.*'
+color index_number blue default
+color index_subject cyan default '.s'
+color index_size green default
+color normal default default
+color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color body brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+
+bind editor <space> noop
+bind index G last-entry
+bind index d half-down
+bind index u half-up
+bind index D delete-message
+bind index U undelete-message
+bind index F search 
+bind index R group-reply
+
+auto_view application/pdf'
