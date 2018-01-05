@@ -29,9 +29,7 @@ color body brightblue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 
 bind editor <space> noop
 bind index G last-entry
-bind index d half-down
 bind index u half-up
-bind index D delete-message
 bind index U undelete-message
 bind index F search 
 bind index R group-reply
