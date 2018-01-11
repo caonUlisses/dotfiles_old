@@ -23,6 +23,7 @@ Plugin 'dracula/vim'                    " Theme
 Plugin 'emhaye/ceudah.vim'              " Theme
 Plugin 'epilande/vim-es2015-snippets'   " Es2015 Snippets
 Plugin 'epilande/vim-react-snippets'    " React snippets
+"Plugin 'flowtype/vim-flow'              " Flow tools
 Plugin 'godlygeek/tabular'              " Code tabulation
 Plugin 'gregsexton/MatchTag'            " Highlight the matching tag
 Plugin 'itmammoth/doorboy.vim'          " No more 'esc j i } esc k'
@@ -51,7 +52,7 @@ let g:ale_fixers = {
 \}
 
 let g:ale_linters = {
-\   'javascript': ['standard'],
+\   'javascript': ['standard', 'flow'],
 \}
 
 let g:ale_lint_on_text_changed = 'never'
@@ -90,6 +91,8 @@ nmap <Leader>= :split <cr>
 nmap <Leader>% :vsplit <cr>
 nmap <Leader>ht :highlight NonText ctermfg=0<cr>
 nmap <Leader><cr> o <esc> kk <cr>
+noremap <Leader><C-J> <C-W><C-J> :q <cr>
+noremap <Leader><C-K> <C-W><C-K> :q <cr>
 
 let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -119,6 +122,9 @@ filetype plugin indent on " fix autoindent based on filetype
 
 " ControlP Vim
 let g:ctrlp_custom_ignore = 'node_modules\|git' " remove folders from ctrlp
+
+" YouCompleteMe
+highlight Pmenu ctermfg=15 ctermbg=2
 
 " Source vimrc file on save
 augroup autosourcing
