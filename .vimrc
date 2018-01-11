@@ -30,7 +30,7 @@ Plugin 'ap/vim-css-color'               " Display colors on CSS
 Plugin 'csscomb/vim-csscomb'            " Css tools
 Plugin 'sickill/vim-monokai'            " Theme
 Plugin 'dracula/vim'                    " Theme
-Plugin 'plasticboy/vim-markdown'        " Markdown Tools
+" Plugin 'plasticboy/vim-markdown'        " Markdown Tools
 Plugin 'suan/vim-instant-markdown'      " Instant markdown live-edit
 Plugin 'mzlogin/vim-markdown-toc'       " Table of Contents generator for md
 Plugin 'itmammoth/doorboy.vim'          " No more 'esc j i } esc k'
