@@ -10,34 +10,32 @@ set rtp+=~/.vim/bundle/Vundle.vim  " required
 call vundle#begin()                " starts vundle
 
 " Plugins
-Plugin 'VundleVim/Vundle.vim'           " Vundle Plgin manager
-Plugin 'tpope/vim-fugitive'             " Git wrapper
-Plugin 'kien/ctrlp.vim'                 " Fuzzy file search (folder wide)
-Plugin 'scrooloose/nerdtree'            " Filesystem treeview
-Plugin 'emhaye/ceudah.vim'              " Theme
 Plugin 'Dru89/vim-adventurous'          " Theme
-Plugin 'Valloric/YouCompleteMe'         " Autocomplete
-Plugin 'moll/vim-node'                  " NodeJS tools
-Plugin 'godlygeek/tabular'              " Code tabulation
-Plugin 'airblade/vim-gitgutter'         " Git extras
+Plugin 'KabbAmine/vCoolor.vim'          " Color picker
 Plugin 'SirVer/ultisnips'               " Snippets
+Plugin 'Valloric/YouCompleteMe'         " Autocomplete
+Plugin 'VundleVim/Vundle.vim'           " Vundle Plgin manager
+Plugin 'airblade/vim-gitgutter'         " Git extras
+Plugin 'ap/vim-css-color'               " Display colors on CSS
+Plugin 'christoomey/vim-tmux-navigator' " Tmux keys
+Plugin 'csscomb/vim-csscomb'            " Css tools
+Plugin 'dracula/vim'                    " Theme
+Plugin 'emhaye/ceudah.vim'              " Theme
 Plugin 'epilande/vim-es2015-snippets'   " Es2015 Snippets
 Plugin 'epilande/vim-react-snippets'    " React snippets
-Plugin 'mattn/emmet-vim'                " Emmet for vim
-Plugin 'w0rp/ale'                       " Asynchronous Linting Engine for JS
-Plugin 'KabbAmine/vCoolor.vim'          " Color picker
-Plugin 'ap/vim-css-color'               " Display colors on CSS
-Plugin 'csscomb/vim-csscomb'            " Css tools
-Plugin 'sickill/vim-monokai'            " Theme
-Plugin 'dracula/vim'                    " Theme
-" Plugin 'plasticboy/vim-markdown'        " Markdown Tools
-Plugin 'suan/vim-instant-markdown'      " Instant markdown live-edit
-Plugin 'mzlogin/vim-markdown-toc'       " Table of Contents generator for md
-Plugin 'itmammoth/doorboy.vim'          " No more 'esc j i } esc k'
-Plugin 'tpope/vim-surround'             " Change surroundings
+Plugin 'godlygeek/tabular'              " Code tabulation
 Plugin 'gregsexton/MatchTag'            " Highlight the matching tag
+Plugin 'itmammoth/doorboy.vim'          " No more 'esc j i } esc k'
+Plugin 'kien/ctrlp.vim'                 " Fuzzy file search (folder wide)
+Plugin 'mattn/emmet-vim'                " Emmet for vim
+Plugin 'moll/vim-node'                  " NodeJS tools
 Plugin 'mxw/vim-jsx'                    " JSX funtionallity
-Plugin 'christoomey/vim-tmux-navigator' " Tmux keys
+Plugin 'mzlogin/vim-markdown-toc'       " Table of Contents generator for md
+Plugin 'scrooloose/nerdtree'            " Filesystem treeview
+Plugin 'sickill/vim-monokai'            " Theme
+Plugin 'tpope/vim-fugitive'             " Git wrapper
+Plugin 'tpope/vim-surround'             " Change surroundings
+Plugin 'w0rp/ale'                       " Asynchronous Linting Engine for JS
 
 " JSX tag highlighting
 let g:jsx_ext_required = 1
