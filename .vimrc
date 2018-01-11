@@ -124,7 +124,7 @@ filetype plugin indent on " fix autoindent based on filetype
 let g:ctrlp_custom_ignore = 'node_modules\|git' " remove folders from ctrlp
 
 " YouCompleteMe
-highlight Pmenu ctermfg=15 ctermbg=2
+highlight Pmenu ctermfg=15 ctermbg=125
 
 " Source vimrc file on save
 augroup autosourcing
