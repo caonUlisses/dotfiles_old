@@ -23,7 +23,6 @@ Plugin 'dracula/vim'                    " Theme
 Plugin 'emhaye/ceudah.vim'              " Theme
 Plugin 'epilande/vim-es2015-snippets'   " Es2015 Snippets
 Plugin 'epilande/vim-react-snippets'    " React snippets
-"Plugin 'flowtype/vim-flow'              " Flow tools
 Plugin 'godlygeek/tabular'              " Code tabulation
 Plugin 'gregsexton/MatchTag'            " Highlight the matching tag
 Plugin 'itmammoth/doorboy.vim'          " No more 'esc j i } esc k'
