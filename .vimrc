@@ -5,45 +5,53 @@ let mapleader = ","  " set the <Leader> key as ,
 
 " Vundle
 set nocompatible                   " be iMproved, required
-filetype off                       " required
-set rtp+=~/.vim/bundle/Vundle.vim  " required
-call vundle#begin()                " starts vundle
+call plug#begin()                " starts vundle
 
 " Plugins
-Plugin 'Dru89/vim-adventurous'          " Theme
-Plugin 'KabbAmine/vCoolor.vim'          " Color picker
-Plugin 'SirVer/ultisnips'               " Snippets
-Plugin 'Valloric/YouCompleteMe'         " Autocomplete
-Plugin 'VundleVim/Vundle.vim'           " Vundle Plgin manager
-Plugin 'airblade/vim-gitgutter'         " Git extras
-Plugin 'ap/vim-css-color'               " Display colors on CSS
-Plugin 'christoomey/vim-tmux-navigator' " Tmux keys
-Plugin 'csscomb/vim-csscomb'            " Css tools
-Plugin 'dracula/vim'                    " Theme
-Plugin 'emhaye/ceudah.vim'              " Theme
-Plugin 'epilande/vim-es2015-snippets'   " Es2015 Snippets
-Plugin 'epilande/vim-react-snippets'    " React snippets
-Plugin 'godlygeek/tabular'              " Code tabulation
-Plugin 'gregsexton/MatchTag'            " Highlight the matching tag
-Plugin 'itmammoth/doorboy.vim'          " No more 'esc j i } esc k'
-Plugin 'kien/ctrlp.vim'                 " Fuzzy file search (folder wide)
-Plugin 'mattn/emmet-vim'                " Emmet for vim
-Plugin 'moll/vim-node'                  " NodeJS tools
-Plugin 'mxw/vim-jsx'                    " JSX funtionallity
-Plugin 'mzlogin/vim-markdown-toc'       " Table of Contents generator for md
-Plugin 'scrooloose/nerdtree'            " Filesystem treeview
-Plugin 'sickill/vim-monokai'            " Theme
-Plugin 'tpope/vim-fugitive'             " Git wrapper
-Plugin 'tpope/vim-surround'             " Change surroundings
-Plugin 'w0rp/ale'                       " Asynchronous Linting Engine for JS
+Plug 'Dru89/vim-adventurous'          " Theme
+Plug 'KabbAmine/vCoolor.vim'          " Color picker
+Plug 'SirVer/ultisnips'               " Snippets
+Plug 'Valloric/YouCompleteMe'         " Autocomplete
+Plug 'VundleVim/Vundle.vim'           " Vundle Plgin manager
+Plug 'airblade/vim-gitgutter'         " Git extras
+Plug 'ap/vim-css-color'               " Display colors on CSS
+Plug 'christoomey/vim-tmux-navigator' " Tmux keys
+Plug 'csscomb/vim-csscomb'            " Css tools
+Plug 'dracula/vim'                    " Theme
+Plug 'emhaye/ceudah.vim'              " Theme
+Plug 'epilande/vim-es2015-snippets'   " Es2015 Snippets
+Plug 'epilande/vim-react-snippets'    " React snippets
+Plug 'fatih/vim-go'
+Plug 'godlygeek/tabular'              " Code tabulation
+Plug 'gregsexton/MatchTag'            " Highlight the matching tag
+Plug 'itmammoth/doorboy.vim'          " No more 'esc j i } esc k'
+Plug 'kien/ctrlp.vim'                 " Fuzzy file search (folder wide)
+Plug 'mattn/emmet-vim'                " Emmet for vim
+Plug 'mileszs/ack.vim'                " Ag integration
+Plug 'moll/vim-node'                  " NodeJS tools
+Plug 'mxw/vim-jsx'                    " JSX funtionallity
+Plug 'mzlogin/vim-markdown-toc'       " Table of Contents generator for md
+Plug 'scrooloose/nerdtree'            " Filesystem treeview
+Plug 'sickill/vim-monokai'            " Theme
+Plug 'tpope/vim-fugitive'             " Git wrapper
+Plug 'tpope/vim-surround'             " Change surroundings
+Plug 'w0rp/ale'                       " Asynchronous Linting Engine for JS
+Plug 'Galooshi/vim-import-js'         " autoimport for node modules
+Plug 'Xuyuanp/nerdtree-git-plugin'    " NERDTree improvement on git
+Plug 'ryanoasis/vim-devicons'         " icons
+Plug 'vim-airline/vim-airline'        " airline
+Plug 'mhinz/vim-signify'              " git status
+Plug 'ternjs/tern_for_vim'            " js autocomplete
 
 " JSX tag highlighting
 let g:jsx_ext_required = 1
  
 " Scripts
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()            " required
 set encoding=utf8            " enables UFT-8
+
+" Ag Configs
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " JavaScript Standards
 let g:ale_fixers = {
@@ -57,6 +65,10 @@ let g:ale_linters = {
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
+
+" Pasting
+set pastetoggle=<F2>
+set copyindent
 
 " Emmet
 let g:user_emmet_settings = {
@@ -83,9 +95,9 @@ map <Leader><tab> :NERDTreeToggle<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
-nmap <Leader>vpi :PluginInstall<cr>
-nmap <Leader>vpu :PluginUpdate<cr>
-nmap <Leader>vpc :PluginClean<cr> y <cr>
+nmap <Leader>vpi :PlugInstall<cr>
+nmap <Leader>vpu :PlugUpdate<cr>
+nmap <Leader>vpc :PlugClean<cr> y <cr>
 nmap <Leader>= :split <cr>
 nmap <Leader>% :vsplit <cr>
 nmap <Leader>ht :highlight NonText ctermfg=0<cr>
@@ -124,6 +136,17 @@ let g:ctrlp_custom_ignore = 'node_modules\|git' " remove folders from ctrlp
 
 " YouCompleteMe
 highlight Pmenu ctermfg=15 ctermbg=125
+
+" NerdTREE
+let NERDTreeShowHidden=1
+
+" CtrlP Vim
+let g:ctrlp_show_hidden = 1
+
+" NerdIcons
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1"
+let g:webdevicons_enable_ctrlp = 1
 
 " Source vimrc file on save
 augroup autosourcing
