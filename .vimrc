@@ -9,6 +9,12 @@ set nocompatible                   " be iMproved, required
 call plug#begin()                " starts vundle
 
 " Plugins
+Plug 'junegunn/fzf.vim'               " Fzf support
+Plug 'gcmt/taboo.vim'                 " Nice Tabs
+Plug 'google/vim-maktaba'             " Dart
+Plug 'google/vim-glaive'              " Dart
+Plug 'google/vim-codefmt'             " Dart
+Plug 'natebosch/vim-lsc'              " Dart
 Plug 'dart-lang/dart-vim-plugin'      " Dart
 Plug 'wendyyuchensun/import-cost-vim' " Import size
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  " NERDColors
@@ -25,7 +31,7 @@ Plug 'scrooloose/nerdcommenter'       " Easy comment lines
 Plug 'KabbAmine/vCoolor.vim'          " Color picker
 Plug 'SirVer/ultisnips'               " Snippets
 Plug 'Valloric/YouCompleteMe'         " Autocomplete
-Plug 'VundleVim/Vundle.vim'           " Vundle Plgin manager
+Plug 'VundleVim/Vundle.vim'           " Vundle Plugin manager
 Plug 'airblade/vim-gitgutter'         " Git extras
 Plug 'ap/vim-css-color'               " Display colors on CSS
 Plug 'christoomey/vim-tmux-navigator' " Tmux keys
@@ -43,21 +49,46 @@ Plug 'mattn/emmet-vim'                " Emmet for vim
 Plug 'mileszs/ack.vim'                " Ag integration
 Plug 'moll/vim-node'                  " NodeJS tools
 Plug 'mxw/vim-jsx'                    " JSX funtionallity
-Plug 'mzlogin/vim-markdown-toc'       " Table of Contents generator for md
 Plug 'scrooloose/nerdtree'            " Filesystem treeview
 Plug 'sickill/vim-monokai'            " Theme
 Plug 'tpope/vim-fugitive'             " Git wrapper
 Plug 'tpope/vim-surround'             " Change surroundings
-Plug 'w0rp/ale'                       " Asynchronous Linting Engine for JS
+Plug 'w0rp/ale'                       " Asynchronous Linting Engine
 Plug 'Galooshi/vim-import-js'         " autoimport for node modules
 Plug 'vim-airline/vim-airline'        " airline
 Plug 'mhinz/vim-signify'              " git status
 Plug 'ternjs/tern_for_vim'            " js autocomplete
 Plug 'ryanoasis/vim-devicons'         " icons
+Plug 'mkitt/tabline.vim'              " Show tabs
+
+" Nice tabs
+set guioptions-=e
+
+" Dart
+let g:lsc_server_commands = {'dart': 'dart_language_server'}
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': '<C-]>',
+    \ 'FindReferences': 'gr',
+    \ 'NextReference': '<C-n>',
+    \ 'PreviousReference': '<C-N>',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'DocumentSymbol': 'go',
+    \ 'WorkspaceSymbol': 'gS',
+    \ 'ShowHover': 'K',
+    \ 'Completion': 'completefunc',
+    \}
 
 " JSX tag highlighting
 let g:jsx_ext_required = 1
- 
+
+" Formatting
+augroup autoformat_settings
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType python AutoFormatBuffer yapf
+augroup END
+
 " Scripts
 call plug#end()            " required
 set list
@@ -80,14 +111,14 @@ let g:UltiSnipsEditSplit="vertical"
 
 " ALE
 let g:ale_fixers = {
-\   'javascript': ['standard'],
-\   'python': ['autopep8'],
-\}
+      \   'javascript': ['standard'],
+      \   'python': ['autopep8'],
+      \}
 
 let g:ale_linters = {
-\   'javascript': ['standard'],
-\   'python': ['autopep8'],
-\}
+      \   'javascript': ['standard'],
+      \   'python': ['autopep8'],
+      \}
 
 let g:ale_fix_on_save = 1
 
@@ -100,28 +131,28 @@ set copyindent
 
 " Emmet
 let g:user_emmet_settings = {
-\  'javascript' : {
-\      'extends' : 'jsx',
-\  },
-\} " Allows emmet on JSX files
+      \  'javascript' : {
+      \      'extends' : ['jsx', 'dart']
+      \  },
+      \} " Allows emmet on JSX files
 
 " Calcurse
 autocmd BufRead, BufNewFile /tmp/calcurse* set filetype=markdown      " set md
 autocmd BufRead, BufNewFile ~/.calcurse/notes/* set filetype=markdown " set md
 
 " NERDTree
-let NERDTreeIgnore=['node_modules'] " exclude 'node_modules' from NERDTree
+let NERDTreeIgnore=['node_modules', '.git', '.pub'] " exclude 'node_modules' from NERDTree
 
 " Visuals
 syntax on                          " syntax highlighting
 colorscheme gruvbox               " sets theme
 set background=dark
-let &t_8f="\<Esc>[38;%lu;%lu;%lum" " fix ale weird looks 
+let &t_8f="\<Esc>[38;%lu;%lu;%lum" " fix ale weird looks
 let &t_8b="\<Esc>[48;%lu;%lu;%lum" " fix ale weird looks
 
 " Keymaps
-map <Leader>cl :set background=light<CR>
-map <Leader>cd :set background=dark<CR>
+map <Leader>tl :set background=light<CR>
+map <Leader>td :set background=dark<CR>
 map <Leader><tab> :NERDTreeToggle<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
@@ -178,7 +209,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|git' " remove folders from ctrlp
 nnoremap <leader><C-p> :CtrlPTag<cr>
 
 " YouCompleteMe
-highlight Pmenu ctermfg=15 ctermbg=125
+" highlight Pmenu ctermfg=15 ctermbg=125
 
 " NerdTREE
 let NERDTreeShowHidden=1
@@ -187,12 +218,7 @@ let NERDTreeShowHidden=1
 let g:ctrlp_show_hidden = 1
 
 " NerdIcons
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1"
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
-let g:webdevicons_enable_ctrlp = 1
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeGitStatusNodeColorization = 1
 autocmd FileType nerdtree setlocal nolist
@@ -202,6 +228,24 @@ let g:NERDTreeDirArrowCollapsible = '/'
 
 " Source vimrc file on save
 augroup autosourcing
-		autocmd!
-		autocmd BufWritePost .vimrc source %
+  autocmd!
+  autocmd BufWritePost .vimrc source %
 augroup END
+
+" CTRL P map
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_custom_ignore = 'node_modules\|\v[\/]\.(git|hg|svn|pub)$'
+
+" Show tabs
+hi TabLine      ctermfg=Black  ctermbg=Magenta   cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Magenta     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkMagenta  cterm=NONE
+
+" FZF
+nmap <c-f> :Ag<cr>
+
+" GIT
+nnoremap <Leader>ga :Gadd .<cr>
+nnoremap <Leader>gc :Gcommit -m ""<left>
+nnoremap <Leader>gp :Gpush origin master<cr>
+nnoremap <Leader>gs :Gstatus <cr>
